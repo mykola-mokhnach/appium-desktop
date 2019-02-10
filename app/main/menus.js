@@ -3,11 +3,11 @@ import _ from 'lodash';
 import { createNewSessionWindow, createNewConfigWindow} from './appium';
 import { checkNewUpdates } from './auto-updater';
 import CloudProviders from '../shared/cloud-providers';
-import i18n from '../configs/i18next.config';
 import config from '../configs/app.config';
+import i18n from '../configs/i18next.config';
 
 let menuTemplates = {mac: {}, other: {}};
-let mainWindow;
+let mainWindow = null;
 
 async function getCloudProvidersViewMenu () {
   const providersMenu = [];
@@ -29,10 +29,7 @@ function languageMenu () {
     label: i18n.t(languageCode),
     type: 'radio',
     checked: i18n.language === languageCode,
-    click: async () => {
-      await i18n.changeLanguage(languageCode);
-      await rebuildMenus();
-    }
+    click: () => i18n.changeLanguage(languageCode)
   }));
 }
 
@@ -322,13 +319,14 @@ menuTemplates.other = async () => [
   otherMenuHelp()
 ];
 
-async function rebuildMenus (mainWin) {
+async function rebuildMenus (mainWin = null) {
   if (mainWin) {
     mainWindow = mainWin;
   }
   if (!mainWindow) {
     return;
   }
+
   if (config.platform === 'darwin') {
     const template = await menuTemplates.mac(mainWindow);
     const menu = Menu.buildFromTemplate(template);

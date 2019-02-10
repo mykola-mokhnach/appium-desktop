@@ -1,8 +1,7 @@
 {
-  "en": "en",
-  "de": "de",
+  "en": "English",
+  "de": "Deutsch",
   "Edit": "Bearbeiten",
-  "Undo": "Widerrufen",
   "Redo": "Wiederholen",
   "Cut": "Ausschneiden",
   "Copy": "Kopieren",
@@ -25,9 +24,12 @@
   "Quit": "Beenden",
   "Toggle Full Screen": "Vollbildmodus ein-/ausschalten",
   "Languages": "Sprachen",
-  "Cloud Providers…": "Cloudanbieter…",
   "View": "Darstellung",
   "Reload": "Neu laden",
   "Toggle Developer Tools": "Entwickler-Werkzeuge ein-/ausblenden",
-  "Learn More": "Weitere Infos"
+  "Learn More": "Weitere Infos",
+  "Undo": "Widerrufen",
+  "Cloud Providers": "Cloudanbieter…",
+  "Environment Variables": "Umgebungsvariablen",
+  "Save and Restart": "Sichern und neustarten"
 }

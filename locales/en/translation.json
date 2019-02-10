@@ -24,9 +24,15 @@
   "Quit": "Quit",
   "Toggle Full Screen": "Toggle Full Screen",
   "Languages": "Languages",
-  "Cloud Providers…": "Cloud Providers…",
   "View": "View",
   "Reload": "Reload",
   "Toggle Developer Tools": "Toggle Developer Tools",
-  "Learn More": "Learn More"
+  "Learn More": "Learn More",
+  "Undo": "Undo",
+  "Cloud Providers": "Cloud Providers",
+  "Environment Variables": "Environment Variables",
+  "Save and Restart": "Save and Restart",
+  "Application must be restarted for changes to take effect": "Application must be restarted for changes to take effect",
+  "Restart Now": "Restart Now",
+  "Restart Later": "Restart Later"
 }

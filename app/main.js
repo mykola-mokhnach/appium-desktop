@@ -1,4 +1,4 @@
-import i18n, { initI18n } from './configs/i18next.config';
+import i18n from './configs/i18next.config';
 import { app, BrowserWindow, Menu } from 'electron';
 import { initializeIpc } from './main/appium';
 import { setSavedEnv } from './main/helpers';
@@ -87,8 +87,11 @@ app.on('ready', async () => {
     }]).popup(mainWindow);
   });
 
-  await initI18n();
-  await rebuildMenus(mainWindow);
+  i18n.on('languageChanged', () => {
+    rebuildMenus();
+  });
+
+  rebuildMenus(mainWindow);
 
   promptUser();
 
