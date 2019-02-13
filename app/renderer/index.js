@@ -4,7 +4,6 @@ import Root from './containers/Root';
 import { AppContainer } from 'react-hot-loader';
 import Store from './store/configureStore';
 import { initSentry } from '../shared/sentry';
-import '../configs/i18next.config';
 
 const { history, configureStore } = Store;
 

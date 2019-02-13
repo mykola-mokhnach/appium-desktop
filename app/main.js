@@ -1,4 +1,5 @@
 import i18n from './configs/i18next.config';
+import config from './configs/app.config';
 import { app, BrowserWindow, Menu } from 'electron';
 import { initializeIpc } from './main/appium';
 import { setSavedEnv } from './main/helpers';
@@ -87,8 +88,13 @@ app.on('ready', async () => {
     }]).popup(mainWindow);
   });
 
-  i18n.on('languageChanged', () => {
+  i18n.on('languageChanged', (languageCode) => {
     rebuildMenus();
+    mainWindow.webContents.send('appium-language-changed', {
+      language: languageCode,
+      namespace: config.namespace,
+      resource: i18n.getResourceBundle(languageCode, config.namespace)
+    });
   });
 
   rebuildMenus(mainWindow);

@@ -2,7 +2,6 @@ import { ipcRenderer, remote } from 'electron';
 import React, { Component } from 'react';
 import { Input, Row, Col, Button } from 'antd';
 import styles from './Config.css';
-import { withTranslation } from 'react-i18next';
 
 const ENV_VARIABLE_NAMES = [
   'ANDROID_HOME', 'JAVA_HOME'
@@ -67,4 +66,4 @@ class Config extends Component {
   }
 }
 
-export default withTranslation()(Config);
+export default Config;

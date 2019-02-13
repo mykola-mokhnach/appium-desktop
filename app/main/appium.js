@@ -12,6 +12,8 @@ import {createSession, killSession, getSessionHandler} from './appium-method-han
 import request from 'request-promise';
 import { checkNewUpdates } from './auto-updater';
 import { openBrowserWindow, setSavedEnv } from './helpers';
+import i18n from '../configs/i18next.config';
+import config from '../configs/app.config';
 
 const LOG_SEND_INTERVAL_MS = 250;
 
@@ -379,6 +381,18 @@ function connectServerErrorBackdoor () {
   });
 }
 
+function connectGetInitialTranslation () {
+  ipcMain.on('get-initial-translations', async (event) => {
+    await i18n.loadLanguages('en');
+    const initial = {
+      'en': {
+        'translation': i18n.getResourceBundle('en', config.namespace)
+      }
+    };
+    event.returnValue = initial;
+  });
+}
+
 function initializeIpc (win) {
   // listen for 'start-server' from the renderer
   connectStartServer(win);
@@ -397,6 +411,7 @@ function initializeIpc (win) {
   connectOpenConfig(win);
   connectGetEnv();
   connectSaveEnv();
+  connectGetInitialTranslation();
   connectServerErrorBackdoor();
 
   setTimeout(checkNewUpdates, 10000);
