@@ -1,4 +1,4 @@
-import i18n from 'i18next';
+import i18next from 'i18next';
 import { initReactI18next } from 'react-i18next';
 import config from './app.config';
 
@@ -16,10 +16,13 @@ const i18nextOptions = {
   }
 };
 
-i18n.use(initReactI18next);
 
-if (!i18n.isInitialized) {
-  i18n.init(i18nextOptions);
+let i18n;
+if (!i18n) {
+  i18n = i18next.createInstance(i18nextOptions);
+  i18n
+    .use(initReactI18next)
+    .init(() => {});
 }
 
 export default i18n;
