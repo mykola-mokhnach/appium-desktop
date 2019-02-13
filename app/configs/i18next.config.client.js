@@ -1,6 +1,7 @@
 import i18next from 'i18next';
 import { initReactI18next } from 'react-i18next';
 import config from './app.config';
+import settings from '../shared/settings';
 
 const i18nextOptions = {
   debug: true,
@@ -8,7 +9,7 @@ const i18nextOptions = {
     escapeValue: false
   },
   saveMissing: true,
-  lng: 'en',
+  lng: settings.getSync('PREFERRED_LANGUAGE', 'en'),
   fallbackLng: config.fallbackLng,
   whitelist: config.languages,
   react: {

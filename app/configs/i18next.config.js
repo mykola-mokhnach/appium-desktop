@@ -2,6 +2,7 @@ import i18next from 'i18next';
 import i18nextBackend from 'i18next-node-fs-backend';
 import config from './app.config';
 import path from 'path';
+import settings from '../shared/settings';
 
 const i18nextOptions = {
   backend: {
@@ -14,7 +15,7 @@ const i18nextOptions = {
     escapeValue: false
   },
   saveMissing: true,
-  lng: 'en',
+  lng: settings.getSync('PREFERRED_LANGUAGE', 'en'),
   fallbackLng: config.fallbackLng,
   whitelist: config.languages,
   react: {

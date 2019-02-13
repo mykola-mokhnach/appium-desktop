@@ -8,6 +8,7 @@ import shellEnv from 'shell-env';
 import fixPath from 'fix-path';
 import { initSentry } from './shared/sentry';
 import { promptUser } from './main/sentry-permission-prompt';
+import settings from './shared/settings';
 
 let mainWindow = null;
 const isDev = process.env.NODE_ENV === 'development';
@@ -88,8 +89,9 @@ app.on('ready', async () => {
     }]).popup(mainWindow);
   });
 
-  i18n.on('languageChanged', (languageCode) => {
+  i18n.on('languageChanged', async (languageCode) => {
     rebuildMenus();
+    await settings.set('PREFERRED_LANGUAGE', languageCode);
     webContents.getAllWebContents().forEach((wc) => {
       wc.send('appium-language-changed', {
         language: languageCode,

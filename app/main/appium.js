@@ -383,7 +383,8 @@ function connectServerErrorBackdoor () {
 
 function connectGetInitialTranslation () {
   ipcMain.on('get-initial-translations', async (event) => {
-    await i18n.loadLanguages('en');
+    const language = await settings.get('PREFERRED_LANGUAGE', 'en');
+    await i18n.loadLanguages(language);
     const initial = {
       'en': {
         'translation': i18n.getResourceBundle('en', config.namespace)
