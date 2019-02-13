@@ -1,4 +1,4 @@
-import i18n from 'i18next';
+import i18next from 'i18next';
 import i18nextBackend from 'i18next-node-fs-backend';
 import config from './app.config';
 import path from 'path';
@@ -22,10 +22,13 @@ const i18nextOptions = {
   }
 };
 
-i18n.use(i18nextBackend);
 
-if (!i18n.isInitialized) {
-  i18n.init(i18nextOptions);
+let i18n;
+if (!i18n) {
+  i18n = i18next.createInstance(i18nextOptions);
+  i18n
+    .use(i18nextBackend)
+    .init(() => {});
 }
 
 export default i18n;

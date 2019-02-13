@@ -1,14 +1,13 @@
-import React, { Suspense } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import Spinner from './Spinner';
+import { withTranslation } from 'react-i18next';
+import config from '../../configs/app.config';
 
-export default class App extends React.Component {
+class App extends React.Component {
   render () {
     const { children } = this.props;
     return (
-      <Suspense fallback={<Spinner />}>
-        <React.Fragment>{children}</React.Fragment>
-      </Suspense>
+      <React.Fragment>{children}</React.Fragment>
     );
   }
 }
@@ -16,3 +15,5 @@ export default class App extends React.Component {
 App.propTypes = {
   children: PropTypes.element.isRequired
 };
+
+export default withTranslation(config.namespace)(App);
