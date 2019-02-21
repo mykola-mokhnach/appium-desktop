@@ -26,6 +26,6 @@ jobs:
         # npm run package-ci
         # npm run test-e2e
       #name: PackageAndTest
-    - script: |
-        npm run package-nsis
-      name: PackageNSIS
+    #- script: |
+       # npm run package-nsis
+      #name: PackageNSIS
