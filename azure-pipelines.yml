@@ -25,7 +25,7 @@ jobs:
         # TODO: Add this back when electron builder problem is resolved (Dan Graham)
         # npm run package-ci
         # npm run test-e2e
-      name: PackageAndTest
+      #name: PackageAndTest
     - script: |
         npm run package-nsis
       name: PackageNSIS
