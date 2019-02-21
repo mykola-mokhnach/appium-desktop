@@ -21,7 +21,7 @@ jobs:
     - script: |
         npm ci
       name: Install
-    - script: |
+    #- script: |
         # TODO: Add this back when electron builder problem is resolved (Dan Graham)
         # npm run package-ci
         # npm run test-e2e
